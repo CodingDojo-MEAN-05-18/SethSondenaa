@@ -20,13 +20,21 @@ function Ninja(name) {
 	};
 
 	this.punch = function(hitNinja) {
-		hitNinja.health -= 5;
-		console.log(hitNinja.name + " was punched by " + this.name + " and lost 5 health!");
+		if(!(hitNinja instanceof Ninja)) {
+			console.log('Must punch a ninja!');
+		} else {
+			hitNinja.health -= 5;
+			console.log(hitNinja.name + " was punched by " + this.name + " and lost 5 health!");
+		};
 	};
 
 	this.kick = function(kickedNinja) {
-		kickedNinja.health -= 15 * strength;
-		console.log(kickedNinja.name + " was kicked by " + this.name + " and lost " + 15*strength + " health!");
+		if(!(kickedNinja instanceof Ninja)) {
+			console.log('Must kick a ninja!');
+		} else {
+			kickedNinja.health -= 15 * strength;
+			console.log(kickedNinja.name + " was kicked by " + this.name + " and lost " + 15*strength + " health!");
+		};
 	}
 }
 
@@ -53,4 +61,6 @@ console.log("");
 ferb.kick(phineas);
 console.log("");
 phineas.showStats();
+ferb.kick('Scott');
+ferb.punch('Dan');
 
